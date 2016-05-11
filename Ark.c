@@ -7,12 +7,13 @@
 int nMotorSpeedSetting = 40;
 int direction=0;
 int lineColour = -1;
-int black = 45;
+int black = 30;
 
 //Funcoes
 void followLine();
 void scanLine();
 void corrigeErro();
+int check(int, int);
 
 
 void giraDireita(){
@@ -23,7 +24,17 @@ void giraEsquerda(){
 	motor[leftwheel] = -10;
 	motor[rightwheel] = 10;
 }
-
+int check( int time){
+	time1[T1] = 0;
+	while(	time1[T1] < time ){
+		gira();
+		if(SensorValue[colour] < black){
+			brake();
+			return 1;
+		}
+	}
+	return 0;
+}
 void brake(){
 	motor[leftwheel] = 0;
 	motor[rightwheel] = 0;
@@ -40,21 +51,15 @@ void gira(){
 }
 
 void corrigeErro(){
-	time1[T1] = 0;
 	brake();
-	while(	time1[T1] < 100 ){
-		gira();
-		if(SensorValue[colour] < black){
-			brake();
+	int temp = 10;
+	int varrer = 0;
+	while (true){
+		varrer = check(temp);
+		if(varrer == 1 || temp >= 100){
 			break;
 		}
-	}
-	while(	time1[T1] < 300 ){
-		gira();
-		if(SensorValue[colour] < black){
-	      		brake();
-	      		break;
-	      	}
+		temp += temp;
 	}
 	scanLine();
 }
