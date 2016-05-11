@@ -42,7 +42,7 @@ void brake(){
 
 void gira(){
 	if(direction == 0){
-		direction = 1
+		direction = 1;
 	 	giraDireita();
 	 } else {
 	 	direction = 0;
