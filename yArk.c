@@ -41,6 +41,12 @@ void gira(){
 	 }
 }
 
+void corrige(){
+	celera();
+	sleep(sleepCorrige);
+	brake();
+}
+
 int yProcura(int time){
 	time1[T1] = 0;
 	gira();
@@ -70,8 +76,7 @@ void yScanLine(){
 
 		if(tentativa > tmaximo){
 			// Corrige indo pouquin pra frente
-			celera();
-			sleep(sleepCorrige);
+			corrige();
 
 			tentativa = 100;
 		} else {
@@ -82,5 +87,9 @@ void yScanLine(){
 }
 
 task main(){
-	yScanLine();
+	while(yProcura(5000) == 0){
+		corrige();		
+	}
+
+	followLine();
 }
