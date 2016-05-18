@@ -64,7 +64,7 @@ void corrige(){
 }
 
 int yProcura(int time){
-	displayCenteredBigTextLine(4, "Procurando Linha");
+	//displayCenteredBigTextLine(4, "Procurando Linha");
 	time1[T1] = 0;
 	gira();
 
@@ -92,7 +92,7 @@ void verificaDistancia(){
 		{
 			while((safeDistance - currentDistance) > 2){	
 				currentDistance = SensorValue[sonar4];
-				displayCenteredBigTextLine(4, "Fuuu");
+				//displayCenteredBigTextLine(4, "Fuuu");
 				if(aceleracao > 1){
 					aceleracao--;
 					celera();
@@ -108,7 +108,7 @@ void verificaDistancia(){
 		{
 			while((safeDistance - currentDistance) >= 2){	
 				currentDistance = SensorValue[sonar4];
-				displayCenteredBigTextLine(4, "stand by");
+				displayCenteredBigTextLine(2, "MOVE BICH, GET OUT OF MY WAY");
 				if(aceleracao > 1){
 					aceleracao--;
 					celera();
@@ -122,9 +122,9 @@ void verificaDistancia(){
 
 void yScanLine();
 void followLine(){
-	  displayCenteredBigTextLine(4, "Na Linha");
+	 // displayCenteredBigTextLine(4, "Na Linha");
     while(SensorValue[colour] < black){
-    	displayCenteredBigTextLine(4, "Na Linha2");
+    	//displayCenteredBigTextLine(4, "Na Linha2");
     	verificaDistancia();
     	sleep(sleepTime);
     }
@@ -155,7 +155,7 @@ void yScanLine(){
 }
 
 task main(){
-	displayCenteredBigTextLine(4, "Ola Mundo");
+	displayCenteredBigTextLine(4, "EXTERMINATE");
 	while(yProcura(2000) == 0){
 		corrige();		
 	}
